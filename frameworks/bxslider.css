@@ -1,0 +1,151 @@
+/**
+ * BxSlider v4.1.2 - Fully loaded, responsive content slider
+*/
+/** THEME
+===================================*/
+
+.bx-wrapper .bx-viewport {
+	/*
+	-moz-box-shadow: 0 0 5px #ccc;
+	-webkit-box-shadow: 0 0 5px #ccc;
+	box-shadow: 0 0 5px #ccc;
+	border:  5px solid #fff;
+	left: -5px;
+	background: #fff;
+	*/
+	/*fix other elements on the page moving (on Chrome)*/
+	-webkit-transform: translatez(0);
+	-moz-transform: translatez(0);
+    -ms-transform: translatez(0);
+    -o-transform: translatez(0);
+    transform: translatez(0);
+}
+
+.bx-wrapper .bx-pager,
+.bx-wrapper .bx-controls-auto {
+	position: absolute;
+	bottom: -30px;
+	width: 100%;
+}
+
+/* LOADER */
+
+.bx-wrapper .bx-loading {
+	min-height: 50px;
+	background: url(img/bx_loader.gif) center center no-repeat #fff;
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 2000;
+}
+
+/* DIRECTION CONTROLS (NEXT / PREV) */
+
+.bx-wrapper .bx-prev {
+	left: 10px;
+	background: url(img/controls.png) no-repeat 0 -32px;
+}
+
+.bx-wrapper .bx-next {
+	right: 10px;
+	background: url(img/controls.png) no-repeat -43px -32px;
+}
+
+.bx-wrapper .bx-prev:hover {
+	background-position: 0 0;
+}
+
+.bx-wrapper .bx-next:hover {
+	background-position: -43px 0;
+}
+
+.bx-wrapper .bx-controls-direction a {
+	position: absolute;
+	top: 50%;
+	margin-top: -16px;
+	outline: 0;
+	width: 32px;
+	height: 32px;
+	text-indent: -9999px;
+	z-index: 9000;
+}
+
+.bx-wrapper .bx-controls-direction a.disabled {
+	display: none;
+}
+
+/* AUTO CONTROLS (START / STOP) */
+
+.bx-wrapper .bx-controls-auto {
+	text-align: center;
+}
+
+.bx-wrapper .bx-controls-auto .bx-start {
+	display: block;
+	text-indent: -9999px;
+	width: 10px;
+	height: 11px;
+	outline: 0;
+	background: url(img/controls.png) -86px -11px no-repeat;
+	margin: 0 3px;
+}
+
+.bx-wrapper .bx-controls-auto .bx-start:hover,
+.bx-wrapper .bx-controls-auto .bx-start.active {
+	background-position: -86px 0;
+}
+
+.bx-wrapper .bx-controls-auto .bx-stop {
+	display: block;
+	text-indent: -9999px;
+	width: 9px;
+	height: 11px;
+	outline: 0;
+	background: url(img/controls.png) -86px -44px no-repeat;
+	margin: 0 3px;
+}
+
+.bx-wrapper .bx-controls-auto .bx-stop:hover,
+.bx-wrapper .bx-controls-auto .bx-stop.active {
+	background-position: -86px -33px;
+}
+
+/* PAGER WITH AUTO-CONTROLS HYBRID LAYOUT */
+
+.bx-wrapper .bx-controls.bx-has-controls-auto.bx-has-pager .bx-pager {
+	text-align: left;
+	width: 80%;
+}
+
+.bx-wrapper .bx-controls.bx-has-controls-auto.bx-has-pager .bx-controls-auto {
+	right: 0;
+	width: 35px;
+}
+
+
+/*
+<h5>
+Jiayi Li &nbsp;&nbsp; | &nbsp;&nbsp; <em> Chocolate Stirrer </em> © President and Fellows of Harvard College, Peabody Museum of Archaeology and Ethnology, PM# 07-3-20/C4267 <br/><br/>
+Jiayi Li &nbsp;&nbsp; | &nbsp;&nbsp; <em> Nahua noblewoman preparing a chocolate drink, illustration from the Codex Tudela </em>, 1553 <br/><br/>
+Jiayi Li &nbsp;&nbsp; | &nbsp;&nbsp; <em> Detail of a tile panel depicting a Chocolatada (chocolate party), Valencia, Spain </em>, Early 18th century <br/><br/>
+Jiayi Li &nbsp;&nbsp; | &nbsp;&nbsp; <em> Ruler with bowl of foaming chocolate (cacao); rollout image of polychrome vase, Mesoamerican </em><br/><br/>
+Chloe Reichel &nbsp;&nbsp; | &nbsp;&nbsp; Bruce Nauman, <em> Walking in an Exaggerated Manner around the Perimeter of a Square </em>, 1967-1968 Harvard Art Museums/Fogg Museum, Contemporary Art Department Fund, 2001.288 © Bruce Nauman / Artists Rights Society, NY <br/><br/>
+Chloe Reichel &nbsp;&nbsp; | &nbsp;&nbsp; Jesse Aron Green, <em> Ärztliche Zimmergymnastik </em>, 2008 Harvard Art Museums/Fogg Museum, Louise Haskell Daly Fund, 2014.123 © Jesse Aron Green <br/><br/>
+Rachel Thompson &nbsp;&nbsp; | &nbsp;&nbsp; Roger Marshutz, <em> Young boy flipping through book </em>, c.1950 © President and Fellows of Harvard College, Peabody Museum of Archaeology and Ethnology, Gift of Roger Marshutz PM# 2003.17.2663 <br/><br/>
+Showly Nicholson &nbsp;&nbsp; | &nbsp;&nbsp; <em> Incense burner and cover - made from human skull; Homo sapiens, Mesoamerica </em> © President and Fellows of Harvard College, Peabody Museum of Archaeology and Ethnology, PM# 07-7-20/C4884.0 <br/><br/>
+Showly Nicholson &nbsp;&nbsp; | &nbsp;&nbsp; <em> Funerary urn with relief of rain god Chac </em>, 950 - 1521 © Fundación Televisa, Mexico City, Mexico, REG 21 PJ. 181 <br/><br/>
+Snow Rui &nbsp;&nbsp; | &nbsp;&nbsp; Henry Inman, <em> O-wan-ich-koh (Little Elk) </em>, Winnebago, 1800-1882 © President and Fellows of Harvard College, Peabody Museum of Archaeology and Ethnology, PM# 82-51-10/28268 <br/><br/>
+Snow Rui &nbsp;&nbsp; | &nbsp;&nbsp; James Otto Lewis, <em> O-Wan-Ich-Koh or the Little Elk, a Winnebago Chief </em>, 1836 © Brooklyn Museum, Brooklyn Museum Collection, X1042.147.17 <br/><br/>
+Sara Price &nbsp;&nbsp; | &nbsp;&nbsp; <em> Paten with the Communion of the Apostles </em>, 565-578 CE © Dumbarton Oaks, Byzantine Collection, Washington, DC, BZ.1924.5 <br/><br/>
+</h5>
+<h5>
+<em> Commentary by </em> Jiayi Li
+<em> Commentary by </em> Chloe Reichel
+<em> Commentary by </em> Rachel Thompson
+<em> Commentary by </em> Showly Nicholson
+<em> Commentary by </em> Snow Rui
+<em> Commentary by </em> Sara Price
+</h5>
+*/

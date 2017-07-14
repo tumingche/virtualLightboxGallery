@@ -1,0 +1,303 @@
+body {
+    /*background: #ff0000 url("../img/bg.jpg") no-repeat left top;*/
+    background: #000000;
+    background-size: 1920px 1080px;
+    margin: 0;
+    padding: 0;
+    color: #ffffff;
+    font-size: 9px;
+    overflow: hidden;
+    /* cursor: none; */
+}
+
+h1 {
+    /*font-family: "HelveticaNeue","Helvetica-Neue", "Helvetica", "Arial", sans-serif;*/ 
+    font-family: "Neutral Regular 3";
+    font-size: 9px;
+    font-weight: normal;    /* bold; */
+    font-style: normal;
+    font-variant: normal;   /* small-caps; */
+    text-transform: none;   /* uppercase; */
+    text-align: center;       /* left; */
+    line-height: 10px;
+    letter-spacing: 1px;
+    color: #848484;  /*#626262;*/
+    margin: 0;
+    padding: 0;
+    display: block;
+    opacity: 1.0;
+    transition: opacity 0.3s ease-in-out 0s;
+    -moz-transition: opacity 0.3s ease-in-out 0s;
+    -webkit-transition: opacity 0.3s ease-in-out 0s;
+}
+
+#panel_img
+{
+    background: rgba(0, 0, 0, 1.0);
+    width: 1920px;
+    height: 1080px;
+    top: 0px;
+    left: 0px;
+    position: absolute;
+    z-index: 10;
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+}
+
+#panel_img img {
+    background: none;
+    position: absolute;
+    /*z-index: 1;*/
+    width: 1920px;
+    height: 1080px;
+    top: 50%;
+    left: 50%; 
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%); 
+    -webkit-transform: translate(-50%, -50%);
+    display: block;
+}
+
+#myImg_bot, #myImg_top, #imgInfo {
+    width: 1920px;
+    height: 1080px;
+    position:absolute; 
+    z-index: 10;
+    top: 0px;
+    left: 0px; 
+    margin: 0;
+    padding: 0;
+    display: block;
+}
+
+#myImg_bot {
+	opacity: 1;
+}
+
+#myImg_top {
+    opacity: 0;
+}
+
+#imgInfo {
+    z-index: 20;
+    opacity: 1;
+}
+
+
+#panel_timeline
+{
+    /*background: #000000 url("../img/test.png") no-repeat left top;*/
+    /*background: #000000;*/
+    background: url("../img/img_joe/test.png") no-repeat left top;
+    background-color: none;
+    background-size: 640px 47px;
+    width: 640px;
+    height: 47px;
+    position: absolute;
+    z-index: 30;
+    top: 1034px;
+    left: 640px;
+    margin: 0;
+    padding: 0;
+}
+
+
+#timeline_scrollBar {
+    /*position: relative;
+    float: left;*/
+    width: 500px;
+    height: 47px;
+    /*margin: 20px 0 0 -200px ;*/
+    margin: 0 auto;
+    padding: 0;
+}
+
+
+#timeline_text {
+    background: none;
+    position: absolute;
+    z-index: 100;
+    top: 1033px;
+    left: 1780px;
+    width: 140px;
+    height: 47px;
+    margin: 0;
+    padding: 0;
+}
+
+#description {
+    background: none;
+    width: 640px;
+    height: 47px;
+    position: absolute;
+    z-index: 20;
+    top: 1020px;
+    left: 614px;
+    margin: 0;
+    padding: 9px 0 0 127px;
+}
+
+/* ////////TEXT////////*/
+#text_scrollBar_value, #text_img_num, #text_img_opacity, #text_imgInfo_num {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 20px;
+    font-weight: normal;    /* bold; */
+    font-style: normal;
+    font-variant: normal;   /* small-caps; */
+    /* text-transform: uppercase; */
+    text-align: left;       /* center */
+    line-height: 24px;
+    letter-spacing: 0px;
+    color: #ff0000;
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    display: block;
+}
+
+
+/* ////////SLIDER (CROSS-BROWSER COMPATIBILITY)////////*/
+/* #myRange { */
+input[type=range] {     
+    -webkit-appearance: none;  /* Hides the slider for customizing slider */
+    background: none;
+    width: 500px;
+    height: 60px;
+    margin: -5px 7px 0px 0px;
+    padding: 0 0 0 0;
+    display: block;
+    /* margin: 0 auto; */
+    /*transform: rotate(270deg);*/
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+    -webkit-appearance: none; 
+    background: rgba(120, 120, 120, 0.8);
+    width: 500px;
+    height: 2px;
+    /*border: 0.2px solid #010101;   
+    border-radius: 1px;
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;*/
+}
+input[type=range]::-moz-range-track {
+    background: rgba(120, 120, 120, 0.8);
+    width: 500px;
+    height: 2px;
+    /*border: 0.2px solid #010101;   
+    border-radius: 2px;
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;*/
+}
+input[type=range]::-ms-track {
+    background: transparent ;
+    width: 500px;
+    height: 4px;
+    border-color: transparent;
+    border-width: 1px 0;
+    color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+	background: rgba(160, 160, 160, 1.0);
+	/*border: 0px solid #010101;
+	border-radius: 2px;
+	box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;*/
+    height: 2px;
+    margin: 27px 7px 0 7px;
+    padding: 0;
+}
+input[type=range]::-ms-fill-upper {
+	background: rgba(80, 80, 80, 0.8);
+	/*border: 0px solid #010101;
+	border-radius: 2px;
+	box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;*/
+    height: 2px;
+    margin: 27px 7px 0 7px;
+    padding: 0;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    background: rgba(180, 180, 180, 1.0);
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    border: 1px solid #aaaaaa;  
+    box-shadow: 1px 1px 1px #aaaaaa, 0px 0px 1px #aaaaaa;     
+    margin: -5px 0 0 0; 
+    cursor: pointer;    
+}
+input[type=range]::-moz-range-thumb {
+    background: rgba(180, 180, 180, 1.0);
+    width: 13px;
+    height: 13px;
+    border: 1px solid #aaaaaa;
+    border-radius: 50%;  
+    box-shadow: 1px 1px 1px #aaaaaa, 0px 0px 1px #aaaaaa;     
+    margin: -6px 0 0 0; 
+    cursor: pointer;    
+}
+input[type=range]::-ms-thumb {
+	box-shadow: 1px 1px 1px #aaaaaa, 0px 0px 1px #aaaaaa;
+	border: 1px solid #aaaaaa;
+	height: 13px;
+	width: 13px;
+	border-radius: 50%;
+	background: #b4b4b4;
+    margin: 13px 0 0 0;
+	cursor: pointer;
+}
+
+input[type=range]:focus {
+    outline: none;   /* Removes the blue border */
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+    background: rgba(160, 160, 160, 0.5);
+}
+input[type=range]:focus::-webkit-slider-thumb {
+    background: rgba(180, 180, 180, 1.0);
+    /*cursor: pointer;*/
+}
+input[type=range]:focus::-moz-range-track {
+    background: rgba(160, 160, 160, 0.5);
+}
+input[type=range]:focus::-moz-range-thumb {
+    background: #b4b4b4;
+    cursor: pointer;
+}
+input[type=range]:focus::-ms-fill-lower {
+    background: rgba(160, 160, 160, 0.5);
+}
+input[type=range]:focus::-ms-fill-upper {
+    background: rgba(80, 80, 80, 0.5);
+    cursor: hand;
+}
+input[type=range]:focus::-ms-thumb {
+    background: #b4b4b4;
+    cursor: hand;
+    cursor: pointer;
+}
+input[type=range]::-ms-ticks {
+  border: none;
+}
+input[type=range]::-ms-tooltip {
+  display: none;
+}
+
+
+
+
+
+/*
+#wrapper {
+    width: 500px;
+    margin: 0 auto;
+    text-align: center;
+}
+#mySlider {
+    width: 400px;
+    height: 20px;
+    text-align: center;
+    margin: 0 auto;
+    display: block;
+}
+*/
