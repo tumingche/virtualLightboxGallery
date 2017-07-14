@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+    <meta charset="utf-8"/>
+    <title> 3D Lightbox: Video Slider - Solar </title>
+    <link rel="stylesheet" href="css/style_solar.css" />
+    <style type="text/css"></style>
+    <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript"></script>
+</head> 
+
+
+<body>    
+    <div id="panel_img">     
+        <!-- 
+        <img id="myImg_bot" src="img/1.png" /> 
+        <img id="myImg_top" src="img/2.png" /> 
+        -->
+        <!-- <img id="imgInfo" src="img/cfa_1/cfa_1_info/1.png" /> -->
+        <video id="myVideo_1" autoplay loop>
+            <!-- <source src="http://solar-exhibits.cfa.harvard.edu/Lightbox/Movies/LB0304.mp4" type="video/mp4"> -->
+            <source src="img/img_solar/1.mp4" type="video/mp4">
+        </video> 
+        <video id="myVideo_2" autoplay loop>
+            <!-- <source src="http://solar-exhibits.cfa.harvard.edu/Lightbox/Movies/LB0171.mp4" type="video/mp4"> -->
+            <source src="img/img_solar/2.mp4" type="video/mp4">
+        </video>
+        <video id="myVideo_3" autoplay loop>
+            <!-- <source src="http://solar-exhibits.cfa.harvard.edu/Lightbox/Movies/LB0193.mp4" type="video/mp4"> -->
+            <source src="img/img_solar/3.mp4" type="video/mp4">
+        </video> 
+        <video id="myVideo_4" autoplay loop>
+            <!-- <source src="http://solar-exhibits.cfa.harvard.edu/Lightbox/Movies/LB0211.mp4" type="video/mp4"> -->
+            <source src="img/img_solar/4.mp4" type="video/mp4">
+        </video>
+        <video id="myVideo_5" autoplay loop>
+            <!-- <source src="http://solar-exhibits.cfa.harvard.edu/Lightbox/Movies/LB0335.mp4" type="video/mp4"> -->
+            <source src="img/img_solar/5.mp4" type="video/mp4">
+        </video>
+    </div> 
+    <div id="panel_timeline">
+        <div id="timeline_text">
+            <p id="text_scrollBar_value"> scrollBar value: null </p>
+            <p id="text_img_num"> img_num: null </p>
+            <p id="text_img_opacity"> img_oppacity: null </p>
+            <p id="text_imgInfo_num"> imgInfo_num: null </p>
+        </div>
+        <div id="timeline_scrollBar">
+            <input type="range" name="points" id="myRange" value="1.0" min="1.0" max="3.00" step="0.05" data-show-value="true" autofocus>
+        </div>
+    </div>
+
+
+    <div id="solar_combo">     
+        <video id="myVideo_combo" autoplay loop>
+            <!-- <source src="http://solar-exhibits.cfa.harvard.edu/Movies/latest_sci_display.mp4" type="video/mp4"> -->
+            <source src="img/img_solar/combo.mp4" type="video/mp4">
+        </video> 
+    </div>
+
+
+
+
+
+
+
+    <script>
+        
+$("#solar_combo").hide();
+$("#timeline_text").hide();
+
+
+document.body.style.transform = "scale(0.53)";
+document.body.style.margin = "2px 0 0 -310px";
+
+
+
+
+        $(document).ready(function(e) {
+            
+            var scrollBar = $("#myRange");
+// var imgInfo = $("#imgInfo");
+// imgInfo.hide();
+
+
+            //$("#myRange").change(function(e) {     //IE
+            //$("#myRange").on("input change", function(e) {
+            scrollBar.on("input change", function(e) {
+
+                var scrollBar_val = this.value;
+
+                var timelineImg_bot_num = Math.round(scrollBar_val);
+                var timelineImg_top_num = Math.floor(scrollBar_val) + 1;  
+                var imgInfo_num = Math.round(scrollBar_val * 2 - 1);   
+          
+                var timelineImg_bot_opacity = Math.cos(Math.abs(scrollBar_val - timelineImg_bot_num) * Math.PI).toFixed(2);
+                var timelineImg_top_opacity = Math.sin(Math.abs(scrollBar_val - timelineImg_top_num) * Math.PI).toFixed(2);
+
+                // var timelineImg_bot = $("#myImg_bot");
+                // timelineImg_bot.attr("src", "img/" + ((timelineImg_bot_num * 2 ) - 1) + ".png");
+                // var timelineImg_top = $("#myImg_top");
+                // timelineImg_top.attr("src", "img/" + ((timelineImg_top_num - 1) * 2 ) + ".png");
+
+
+var timelineImg_bot = $("#myVideo_bot");
+timelineImg_bot.attr("src", "img/img_solar/" + ((timelineImg_bot_num * 2 ) - 1) + ".mp4");
+var timelineImg_top = $("#myVideo_top");
+timelineImg_top.attr("src", "img/img_solar/" + ((timelineImg_top_num - 1) * 2 ) + ".mp4");
+
+
+
+if (scrollBar_val >= 0 && scrollBar_val < 1) {
+    $("#myVideo_1").css("opacity", 1.0);
+    $("#myVideo_2").css("opacity", 0.0);
+    $("#myVideo_3").css("opacity", 0.0);
+    $("#myVideo_4").css("opacity", 0.0);
+    $("#myVideo_5").css("opacity", 0.0);
+} else if (scrollBar_val >= 1 && scrollBar_val < 1.5) {
+    $("#myVideo_1").css("opacity", timelineImg_bot_opacity);
+    $("#myVideo_2").css("opacity", timelineImg_top_opacity);
+    $("#myVideo_3").css("opacity", 0.0);
+    $("#myVideo_4").css("opacity", 0.0);
+    $("#myVideo_5").css("opacity", 0.0);
+} else if (scrollBar_val >= 1.5 && scrollBar_val < 2) {
+    $("#myVideo_1").css("opacity", 0.0);
+    $("#myVideo_2").css("opacity", timelineImg_top_opacity);
+    $("#myVideo_3").css("opacity", timelineImg_bot_opacity);
+    $("#myVideo_4").css("opacity", 0.0);
+    $("#myVideo_5").css("opacity", 0.0);
+} else if (scrollBar_val >= 2 && scrollBar_val < 2.5) {
+    $("#myVideo_1").css("opacity", 0.0);
+    $("#myVideo_2").css("opacity", 0.0);
+    $("#myVideo_3").css("opacity", timelineImg_bot_opacity);
+    $("#myVideo_4").css("opacity", timelineImg_top_opacity);
+    $("#myVideo_5").css("opacity", 0.0);
+} else if (scrollBar_val >= 2.5 && scrollBar_val < 3) {
+    $("#myVideo_1").css("opacity", 0.0);
+    $("#myVideo_2").css("opacity", 0.0);
+    $("#myVideo_3").css("opacity", 0.0);
+    $("#myVideo_4").css("opacity", timelineImg_top_opacity);
+    $("#myVideo_5").css("opacity", timelineImg_bot_opacity);
+} else if (scrollBar_val == 3.0) {
+    $("#myVideo_1").css("opacity", 0.0);
+    $("#myVideo_2").css("opacity", 0.0);
+    $("#myVideo_3").css("opacity", 0.0);
+    $("#myVideo_4").css("opacity", 0.0);
+    $("#myVideo_5").css("opacity", 1.0);
+} else {
+    $("#myVideo_1").css("opacity", 0.0);
+    $("#myVideo_2").css("opacity", 0.0);
+    $("#myVideo_3").css("opacity", 0.0);
+    $("#myVideo_4").css("opacity", 0.0);
+    $("#myVideo_5").css("opacity", 0.0);
+}
+
+
+// imgInfo.attr("src", "img/cfa_1_info/" + imgInfo_num + ".png");
+
+// if(scrollBar_val >= 2 && scrollBar_val <= 4 )
+// document.getElementById("myRange").step = "1";
+// else
+// document.getElementById("myRange").step = ".01";
+
+
+
+$("#myVideo_bot").css("opacity", timelineImg_bot_opacity);
+$("#myVideo_top").css("opacity", timelineImg_top_opacity);
+
+
+
+
+
+                // $("#myImg_bot").css("opacity", timelineImg_bot_opacity);
+                // $("#myImg_top").css("opacity", timelineImg_top_opacity);
+                // $("#imgInfo").css("opacity", "1.0");
+  
+                $("#text_scrollBar_value").html("scrollBar value: " + scrollBar_val);
+                $("#text_img_num").html("bot img num: " + (timelineImg_bot_num*2-1) + "--------------top img num: " + (timelineImg_top_num-1)*2);
+                $("#text_img_opacity").html("bot img opacity: " + timelineImg_bot_opacity + "----top img opacity: " + timelineImg_top_opacity); 
+                $("#text_imgInfo_num").html("imgInfo_num: " + imgInfo_num);
+            });
+        });
+
+        $(document).keypress(function(e){
+            var key = e.which;
+            if (key == 13) {
+                e.preventDefault();
+                $("#solar_combo").fadeToggle("fast");
+                // $("#panel_timeline").toggle();
+            }
+            if (key == 32) {
+                $("#timeline_text").toggle();
+            }
+            // if (key == 105)  $("#imgInfo").toggle();
+        });
+
+        $(document).click(function() {
+            $("#myRange").focus();
+        });
+    </script>
+</body> 
+</html>

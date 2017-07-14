@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+    <meta charset="utf-8"/>
+    <title> Franz Marc - Horses </title> 
+    <link type="text/css" rel="stylesheet" href="http://fonts.typotheque.com/WF-023797-007265.css" /> 
+    <link rel="stylesheet" href="css/reveal.css">
+    <!-- <link rel="stylesheet" href="../../css/reveal.css"> -->
+    <style type="text/css">
+    	body { 
+           	/* 
+           	background: #ff0000 url("../img/9screens_orig.png") no-repeat left top;
+           	background-size: 1920px 1080px;
+           	*/
+           	background: #000000;
+           	font-family: "Helvetica", "Arial", sans-serif; 
+           	font-size: 32px;
+           	color: #ffffff;
+           	margin: 0;
+           	padding: 0;
+           	overflow: hidden;
+           	/*cursor: none;*/ 
+        }
+        .background {
+        	position: absolute;
+        	top: 0px;
+        	left: 0px;
+        }
+        .reveal .slides {
+          	width: 100% !important;
+		  	height: 100% !important;
+		  	/*top: 0 !important;*/
+		  	left: 0 !important;
+		  	margin: 0 !important;
+		  	padding: 0 !important;
+		}
+		.reveal .slides>section {
+		 	min-width: 100% !important;
+		 	min-height: 100% !important;
+		  	top: 0 !important;
+		  	left: 0 !important;
+		  	margin: 0 !important;
+		    padding: 0 !important;
+		}
+		.reveal .fragment {
+		 	position: absolute;
+		 	/*min-width: 100% !important;
+		 	min-height: 100% !important;*/
+		  	/*top: 0% !important;
+		  	left: 50% !important;*/
+		  	height: 100% !important;
+		  	top: 0% !important;
+			left: 55.5% !important;   /*68.2%*/
+		  	margin: 0 !important;
+		    padding: 0 !important;
+		    transform: scale(1.37) !important;
+		}
+		.reveal .slides>section img { 
+			/**/
+		}
+		#myImg {
+			position: absolute;
+		  	height: 100% !important;
+		  	top: 0% !important;
+			left: 55.5% !important;   /*68.2%*/
+		  	margin: 0 !important;
+		    padding: 0 !important;
+		    transform: scale(1.37) !important;
+		}
+		h2 {
+		    font-family: "Helvetica", "Arial", sans-serif; 
+		    font-size: 32px;
+		    font-weight: normal;    /* bold; */
+		    font-style: normal;
+		    font-variant: normal;   /* small-caps; */
+		    text-transform: none;   /* uppercase; */
+		    text-align: center;       /* left; */
+		    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+		    line-height: 48px !important;
+		    letter-spacing: 0px;
+		    color: #ffffff;  /* #626262; #848484; */
+		    margin: 0;
+		    padding: 0;
+		    display: block;
+		    opacity: 1.0;
+		}
+		p {
+			font-family: "Helvetica", "Arial", sans-serif; 
+		    font-size: 20px !important;
+		    line-height: 20px !important;
+		    letter-spacing: 1px;
+		    color: #000000;
+		}
+		#grid {
+			height: 100%;
+		    position: absolute; 
+		    z-index: 10;
+		    top: 0px;
+		    left: 0px; 
+		    margin: 0;
+		    padding: 0;
+		}
+    </style>
+    <!-- <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script> -->
+    <!-- <script type="text/javascript"></script> -->	
+</head>
+
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section data-background-transition="fade" data-background="img/img_horses/1.jpg"></section>
+			<section data-background-transition="none" data-background="img/img_horses/2.jpg">
+				<img class="fragment" src="img/img_horses/art_3_info/3_reveal.png" />
+				<img class="fragment" src="img/img_horses/art_3_info/4_reveal.png" />
+			</section>
+			<section data-background-transition="none" data-background="img/img_horses/5.jpg"></section>
+			<section data-background-transition="none" data-background="img/img_horses/6.jpg"></section>
+			<section data-background-transition="fade" data-background="img/img_horses/7.jpg"></section>
+			<section data-background-transition="fade" data-background="img/img_horses/8.jpg"></section>
+			<section data-background-transition="fade" data-background="img/img_horses/9.jpg">
+				<img class="fragment" src="img/img_horses/art_3_info/10_reveal.png" />
+			</section>
+			<section data-background-transition="fade" data-background="img/img_horses/11.jpg"></section>
+		</div>
+	</div>
+
+
+	<!-- <img id="grid" src="img/art_3/9screens_orig.png" /> -->
+
+
+	<script type="text/javascript" src="js/reveal.js"></script>
+	<script type="text/javascript">
+		Reveal.initialize({
+			controls: false,
+			keyboard: true,
+			center: false,
+			//backgroundTransition: 'fade',   // default/none/fade/slide/convex/concave/zoom
+			transitionSpeed: 'fast',    // default/fast/slow
+			transition: 'fade',
+			// transition: 'default', // none/fade/slide/convex/concave/zoom
+			// width: 260,
+  			// height: 700,
+		    // margin: 0.1,
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+    <meta charset="utf-8"/>
+    <title> 3D Lightbox: Painting Viewer 3 </title> 
+    <link type="text/css" rel="stylesheet" href="http://fonts.typotheque.com/WF-023797-007265.css" />
+    <style type="text/css">
+        body { 
+            /*background: #ff0000 url("../img/9screens_orig.png") no-repeat left top;*/
+            background: #000000;
+            background-size: 1920px 1080px;
+            margin: 0;
+            padding: 0;
+            color: #ffffff;
+            /*font-family: "HelveticaNeue","Helvetica-Neue", "Helvetica", "Arial", sans-serif; */
+            font-family: "Neutral Regular 3";
+            font-size: 7px;
+            overflow: hidden;
+            /*cursor: none;*/ 
+        }
+        #menu {
+            background: rgba(255, 255, 255, 1.0);
+            position: absolute;
+            width: 1920px;
+            height: 1080px;
+            top: 0;
+            left: 0;
+            margin: 0;
+            padding: 0;
+        }
+        #menu ul {
+            background: rgba(255, 0, 0, 1.0);
+            list-style-type: none;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        #menu ul li {
+            display: inline;
+        }
+        #menu ul li:hover {
+            /**/
+        }
+        #menu ul li:hover div {
+            background: rgba(200, 200, 200, 1.0);
+        }
+        #menu ul li.selected {
+            /**/
+        }
+        #menu ul li.selected div {
+            background: rgba(200, 200, 200, 1.0);
+        }
+        #menu ul li div {
+            background: rgba(255, 255, 255, 1.0);
+            transition: background 0.3s ease-in-out 0s;
+            -moz-transition: background 0.3s ease-in-out 0s;
+            -webkit-transition: background 0.3s ease-in-out 0s;
+        }
+        #btn_cleve, #btn_bazille, #btn_botticelli {
+            /**/
+        }
+        #modal_cleve, #modal_bazille, #modal_botticelli {
+            background: rgba(0, 0, 0, 1.0);
+            position: absolute;
+            width: 1920px;
+            height: 1080px;
+            top: 0;
+            left: 0;
+            padding: 0;
+            margin: 0;
+        }
+        h1, h2 {
+            font-family: "Neutral Regular 3";
+            font-size: 7px;
+            font-weight: normal;    /* bold; */
+            font-style: normal;
+            font-variant: normal;   /* small-caps; */
+            text-transform: none;   /* uppercase; */
+            text-align: center;       /* left; */
+            line-height: 10px;
+            letter-spacing: 0px;
+            /*color: #000000;*/
+            margin: 0;
+            padding: 0;
+            display: block;
+            opacity: 1.0;
+            transition: opacity 0.3s ease-in-out 0s;
+            -moz-transition: opacity 0.3s ease-in-out 0s;
+            -webkit-transition: opacity 0.3s ease-in-out 0s;
+        }
+        h1 {
+            color: #626262;
+        }
+        h2 {
+            color: #626262;
+            text-align: left;
+        }
+    </style>
+    <!-- <link rel="stylesheet" href="css/style.css" /> -->
+    <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript"></script>
+</head> 
+
+
+<body> 
+    <div id="menu">
+        <ul>
+            <li id="btn_cleve"> 
+                <div style="position:absolute;height:1080px;left:0;">
+                <!-- <div id="btn_cleve" style="background:rgba(0,255,0,0.0);position:absolute;height:3240px;left:0;padding:0 164px;" onmouseover="this.style.background='rgba(200,200,200,0.0)';" onmouseout="this.style.background='rgba(255,255,255,0.0)';"> -->
+                    <img style="width:444px;height:534px;margin:273px 55px 226px 55px;" src="img/img_3paintings/1961_26_v.jpg" title="" />
+                    <h1> 
+                        Joos van Cleve <br>
+                        Saint Jerome in His Study, 1521 <br>
+                        Level 2, Room 2540
+                    </h1>
+                </div>
+            </li>
+            <li id="btn_bazille">
+                <div style="position:absolute;height:1080px;left:554px;">
+                    <img style="width:852px;height:846px;margin:117px 54px 70px 54px;" src="img/img_3paintings/1937_78_v.jpg" title="" />
+                    <h1> 
+                        Jean Frédéric Bazille <br>
+                        Summer Scene, 1869 <br>
+                        Level 2, Room 2700
+                    </h1>
+                </div>
+            </li>
+            <li id="btn_botticelli">
+                <div style="position:absolute;height:1080px;left:1514px;">
+                    <img style="width:296px;height:469px;margin:305px 55px 259px 55px;" src="img/img_3paintings/1943_105_v.jpg" title="" />
+                    <h1> 
+                        Sandro Botticelli <br>
+                        The Virgin and Child, c. 1490 <br>
+                        Level 2, Room 2500
+                    </h1>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+
+
+
+    <div id="modal_cleve">
+        <img style="position:absolute;z-index:200;top:360px;left:122px;width:299px;height:360px;" src="img/img_3paintings/1961_26_v.jpg" title="" />
+        <img id="img_1961_26_v" style="position:absolute;z-index:200;top:23px;left:530px;width:860px;height:1033px;" src="img/img_3paintings/1961_26_v.jpg" title="" />
+        <img id="img_1961_26_u" style="position:absolute;z-index:199;top:23px;left:530px;width:860px;height:1033px;" src="img/img_3paintings/1961_26_u.jpg" title="" />
+        <img style="position:absolute;z-index:200;top:360px;left:1499px;width:299px;height:360px;" src="img/img_3paintings/1961_26_u.jpg" title="" />
+        <!-- <a class="close-reveal-modal"> &#215; </a> -->
+        <h2 style="position:relative;float:left;margin:1060px 0 0 233px;"> Visible Light Photograph </h2>
+        <h2 style="position:relative;float:left;margin:1060px 0 0 567px;"> Joos van Cleve  |  Saint Jerome in His Study </h2>
+        <h2 style="position:relative;float:left;margin:1060px 0 0 580px;"> Ultraviolet Fluorescence Photograph </h2>
+    </div>
+    <div id="modal_bazille">
+        <img style="position:absolute;z-index:200;top:360px;left:38px;width:363px;height:360px;" src="img/img_3paintings/1937_78_v.jpg" title="" />
+        <img id="img_1937_78_v" style="position:absolute;z-index:200;top:23px;left:439px;width:1042px;height:1033px;" src="img/img_3paintings/1937_78_v.jpg" title="" />
+        <img id="img_1937_78_x" style="position:absolute;z-index:199;top:23px;left:439px;width:1042px;height:1033px;" src="img/img_3paintings/1937_78_x.jpg" title="" />
+        <img style="position:absolute;z-index:200;top:360px;left:1520px;width:363px;height:360px;" src="img/img_3paintings/1937_78_x.jpg" title="" />
+        <h2 style="position:relative;float:left;margin:1060px 0 0 180px;"> Visible Light Photograph </h2>
+        <h2 style="position:relative;float:left;margin:1060px 0 0 650px;"> Jean Frédéric Bazille  |  Summer Scene </h2>
+        <h2 style="position:relative;float:left;margin:1060px 0 0 660px;"> X-radiograph  </h2>
+    </div>
+    <div id="modal_botticelli">
+        <img style="position:absolute;z-index:200;top:360px;left:305px;width:228px;height:360px;" src="img/img_3paintings/1943_105_v.jpg" title="" />
+        <img id="img_1943_105_v" style="position:absolute;z-index:200;top:23px;left:642px;width:636px;height:1033px;" src="img/img_3paintings/1943_105_v.jpg" title="" />
+        <img id="img_1943_105_i" style="position:absolute;z-index:199;top:23px;left:642px;width:636px;height:1033px;" src="img/img_3paintings/1943_105_i.jpg" title="" />
+        <img style="position:absolute;z-index:200;top:360px;left:1388px;width:228px;height:360px;" src="img/img_3paintings/1943_105_i.jpg" title="" />
+        <h2 style="position:relative;float:left;margin:1060px 0 0 367px;"> Visible Light Photograph </h2>
+        <h2 style="position:relative;float:left;margin:1060px 0 0 467px;"> Sandro Botticelli  |  The Virgin and Child </h2>
+        <h2 style="position:relative;float:left;margin:1060px 0 0 460px;"> Infrared Photograph </h2>
+    </div>
+
+
+
+    <script type="text/javascript">
+        /*---------MENU-----------------------------*/
+        var li = $("li");
+        var liSelected;
+
+        var show_menu = true;
+
+        $("#modal_cleve").hide();
+        $("#modal_bazille").hide();
+        $("#modal_botticelli").hide();
+
+
+        /*---------MODEL:CHANGE TRANSPARENCY--------*/
+        var op = 1;
+        var step = 0.1; 
+        var min = 0.2, max = 1;
+        
+        var img_1961_26_v = document.getElementById("img_1961_26_v");
+        var img_1937_78_v = document.getElementById("img_1937_78_v");
+        var img_1943_105_v = document.getElementById("img_1943_105_v");
+        
+        img_1961_26_v.style.opacity = op;
+        img_1937_78_v.style.opacity = op;
+        img_1943_105_v.style.opacity = op;
+
+
+        $(document).ready(function(){
+            document.body.style.transform = "scale(0.53)";
+            document.body.style.margin = "2px 0 0 -310px";
+        });
+
+
+        $(document).on("keydown", function(e) {
+            if(show_menu) {
+                if(e.which === 39) {
+                    if(liSelected) {
+                        liSelected.removeClass("selected");
+                        next = liSelected.next();
+                        if(next.length > 0) {
+                            liSelected = next.addClass("selected");
+                        } else {
+                            liSelected = li.eq(0).addClass("selected");
+                        }
+                    } else {
+                        liSelected = li.eq(0).addClass("selected");
+                    }
+                    console.log("menu_select_R");
+                } else if(e.which === 37) {
+                    if(liSelected) {
+                        liSelected.removeClass("selected");
+                        next = liSelected.prev();
+                        if(next.length > 0) {
+                            liSelected = next.addClass("selected");
+                        } else {
+                            liSelected = li.last().addClass("selected");
+                        }
+                    } else {
+                        liSelected = li.last().addClass("selected");
+                    }
+                    console.log("menu_select_L");
+                }
+            } else if (!show_menu) {
+                if(e.which === 37 || e.which === 39) {
+                    $("#img_1961_26_v").toggle(); 
+                    $("#img_1937_78_v").toggle(); 
+                    $("#img_1943_105_v").toggle();
+                    console.log("modal_img_flip");   
+                }         
+            }
+
+
+            if (e.which === 38) { 
+                op += step;
+                op = Math.min(max, op); 
+                img_1961_26_v.style.opacity = Math.min(max, op);
+                img_1937_78_v.style.opacity = Math.min(max, op);
+                img_1943_105_v.style.opacity = Math.min(max, op);
+                console.log("modal_img_transparency +");
+            } else if (e.which === 40) {
+                op -= step;
+                op = Math.max(min, op);
+                img_1961_26_v.style.opacity = Math.min(max, op);
+                img_1937_78_v.style.opacity = Math.min(max, op);
+                img_1943_105_v.style.opacity = Math.min(max, op);
+                console.log("modal_img_transparency -");
+            }
+        });
+        
+
+
+
+        $(document).keypress(function(e){
+            if (e.which === 13) { 
+
+                e.preventDefault();
+
+                if(show_menu) {
+                    if($("#btn_cleve").hasClass("selected")) {
+                    // if($("#btn_cleve").is(":hover")) {
+                        // $("#btn_cleve").click();
+                        // $("#modal_cleve").fadeToggle("fast");
+                        // $("#modal_cleve").show();
+                        $("#modal_cleve").fadeTo("fast", 1.0);
+                        $("#img_1961_26_v").show();
+                        show_menu = false;
+                        console.log("show_cleve");
+                    }
+                    if($("#btn_bazille").hasClass("selected")) {
+                        $("#modal_bazille").fadeTo("fast", 1.0);
+                        $("#img_1937_78_v").show(); 
+                        show_menu = false;
+                        console.log("show_bazille");
+                    }
+                    if($("#btn_botticelli").hasClass("selected")) {
+                        $("#modal_botticelli").fadeTo("fast", 1.0);
+                        $("#img_1943_105_v").show();
+                        show_menu = false;
+                        console.log("show_botticelli");
+                    }
+                } else {
+                    $("#modal_cleve").fadeOut("fast");
+                    $("#modal_bazille").fadeOut("fast");
+                    $("#modal_botticelli").fadeOut("fast");
+                    // $("#modal_cleve").fadeTo("fast", 0.0);
+                    // $("#modal_bazille").fadeTo("fast", 0.0);
+                    // $("#modal_botticelli").fadeTo("fast", 0.0);
+                    // $("#modal_cleve").hide();
+                    // $("#modal_bazille").hide();
+                    // $("#modal_botticelli").hide();
+                    $("#img_1961_26_v").show(); 
+                    $("#img_1937_78_v").show();
+                    $("#img_1943_105_v").show();
+                    img_1961_26_v.style.opacity = 1;
+                    img_1937_78_v.style.opacity = 1;
+                    img_1943_105_v.style.opacity = 1;
+                    
+                    show_menu = true;
+                    console.log("back_to_menu");
+                }
+            }
+        });
+
+
+
+        
+        $(document).on("click", function(e){
+            $("#img_1961_26_v").show(); 
+            $("#img_1937_78_v").show(); 
+            $("#img_1943_105_v").show();
+            img_1961_26_v.style.opacity = 1;
+            img_1937_78_v.style.opacity = 1;
+            img_1943_105_v.style.opacity = 1;
+        });
+        $("#btn_cleve").on("click", function(e){
+            $("#modal_cleve").fadeTo("fast", 1.0);
+            $("#img_1961_26_v").show();
+            show_menu = false;
+            console.log("show_cleve");
+        });
+        $("#btn_bazille").on("click", function(e){
+            $("#modal_bazille").fadeTo("fast", 1.0);
+            $("#img_1937_78_v").show(); 
+            show_menu = false;
+            console.log("show_bazille");
+        });
+        $("#btn_botticelli").on("click", function(e){
+            $("#modal_botticelli").fadeTo("fast", 1.0);
+            $("#img_1943_105_v").show();
+            show_menu = false;
+            console.log("show_botticelli");
+        });
+
+
+        // [LeftArrow]   37     
+        // [UpArrow]     38     
+        // [RightArrow]  39     
+        // [DownArrow]   40
+        // [Space]       32
+        // [Enter]       13
+        // http://www.k68.org/wp-content/uploads/2010/11/Key_Codes.htm
+    </script>
+
+
+    </body>
+</html>

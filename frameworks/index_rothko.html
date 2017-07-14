@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+    <meta charset="utf-8"/>
+    <title> 3D Lightbox: Rothko Viewer </title> 
+    <link type="text/css" rel="stylesheet" href="http://fonts.typotheque.com/WF-023797-007265.css" />
+    <style type="text/css">
+        body { 
+            /*background: #ff0000 url("../img/9screens_orig.png") no-repeat left top;*/
+            background: #000000;
+            background-size: 1920px 1080px;
+            margin: 0;
+            padding: 0;
+            color: #ffffff;
+            /*font-family: "HelveticaNeue","Helvetica-Neue", "Helvetica", "Arial", sans-serif; */
+            font-family: "Neutral Regular 3";
+            font-size: 6px;
+            overflow: hidden;
+            /*cursor: none; */
+        }
+        #main {
+            background: rgba(255, 255, 255, 1.0);
+            position: absolute;
+            width: 1920px;
+            height: 960px;
+            top: 0;
+            left: 0;
+            margin: 0;
+            padding: 0;
+        }
+        #main img {
+            background: none;
+            position: absolute;
+            /*z-index: 10;*/
+            height: 940px;
+            top: 50%;
+            left: 50%; margin-right: -50%;
+            transform: translate(-50%, -50%);
+            display: block;
+        }
+        #img_1_1, #img_2_1, #img_3_1, #img_4_1, #img_5_1 {
+            z-index: 20;
+        }
+        #img_1_2, #img_2_2, #img_3_2, #img_4_2, #img_5_2 {
+            z-index: 10;
+        }
+        #dark_bg {
+            background: rgba(0, 0, 0, 1.0);
+            position: absolute;
+            z-index: 5;
+            width: 1920px;
+            height: 960px;
+            top: 0;
+            left: 0;
+            margin: 0;
+            padding: 0;
+        }
+        #menu {
+            background: rgba(200, 200, 200, 1.0);
+            position: absolute;
+            width: 1920px;
+            height: 120px;
+            top: 960px;
+            left: 0px;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        #menu ul {
+            background: rgba(255, 0, 0, 0.0);
+            height: 120px;
+            display: table;
+            margin: 0 auto;
+            padding: 0;
+            list-style-type: none;
+            text-align: center;
+        }
+        #menu ul li {
+            background: rgba(0, 255, 0, 0.0);
+            /*display: inline;*/
+            float: left;
+            margin: 0;
+            padding: 10px 10px 13px 10px;
+            transition: background 0.3s ease-in-out 0s;
+            -moz-transition: background 0.3s ease-in-out 0s;
+            -webkit-transition: background 0.3s ease-in-out 0s;
+        }
+        #menu ul li:hover {
+            /**/
+        }
+        #menu ul li:hover {
+            background: rgba(255, 255, 255, 1.0);
+        }
+        #menu ul li.selected {
+            /**/
+        }
+        #menu ul li.selected {
+            background: rgba(255, 255, 255, 1.0);
+        }
+        #menu ul li img {
+            height: 82px;
+            margin: 0;
+            padding: 0;
+        }
+        #panel_1, #panel_2, #panel_3 {
+            /**/
+        }
+        h1, h2 {
+            font-family: "Neutral Regular 3";
+            font-size: 7px;
+            font-weight: normal;    /* bold; */
+            font-style: normal;
+            font-variant: normal;   /* small-caps; */
+            text-transform: none;   /* uppercase; */
+            text-align: center;       /* left; */
+            line-height: 10px;
+            letter-spacing: 0px;
+            /*color: #000000;*/
+            margin: 0;
+            padding: 0;
+            display: block;
+            opacity: 1.0;
+            transition: opacity 0.3s ease-in-out 0s;
+            -moz-transition: opacity 0.3s ease-in-out 0s;
+            -webkit-transition: opacity 0.3s ease-in-out 0s;
+        }
+        h1 {
+            color: #626262;
+            margin: 3px 0 0 0;
+        }
+        h2 {
+            color: #808080;
+            text-align: left;
+        }
+    </style>
+    <!-- <link rel="stylesheet" href="css/style.css" /> -->
+    <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript"></script>
+</head> 
+
+
+<body> 
+    <div id="main">
+        <img id="img_1_1" src="img/img_rothko/1_1.jpg" />
+        <img id="img_1_2" src="img/img_rothko/1_2.jpg" />
+        <img id="img_2_1" src="img/img_rothko/2_1.jpg" />
+        <img id="img_2_2" src="img/img_rothko/2_2.jpg" />
+        <img id="img_3_1" src="img/img_rothko/3_1.jpg" />
+        <img id="img_3_2" src="img/img_rothko/3_2.jpg" />
+        <img id="img_4_1" src="img/img_rothko/4_1.jpg" />
+        <img id="img_4_2" src="img/img_rothko/4_2.jpg" />
+        <img id="img_5_1" src="img/img_rothko/5_1.jpg" />
+        <img id="img_5_2" src="img/img_rothko/5_2.jpg" />
+
+
+        <div id="dark_bg"></div>
+
+
+<div id="text_1_left" style="position:absolute;z-index:20;width:133px;top:360px;left:0px;margin:117px 0 0 33px;padding:0;">
+<h2>
+By mixing pigments with a range of media within the same painting, Rothko created subtle variations of matte and gloss that further enriched the play of light on the surface. For example, the orange shape in Panel One is often described as more “luminous” than the crimson background. This glowing effect is achieved with the use of whole egg as a binding medium in the orange paint, which contrasts with the matte, animal-glue-based crimson of the background.
+</h2>
+</div>
+<div id="text_2_left" style="position:absolute;z-index:20;width:107px;top:360px;left:0px;margin:117px 0 0 33px;padding:0;">
+<h2>
+In 1962, celebrated abstract expressionist artist Mark Rothko completed a monumental series of paintings commissioned for the penthouse dining room of Harvard University’s newly designed Holyoke Center (now called the Richard A. and Susan F. Smith Campus Center). In a few short years, high levels of natural light coming through the penthouse’s floor-to-ceiling windows caused Rothko’s paintings to fade. By the 1970s, the five paintings showed disfiguring patterns of color loss that disrupted the visual unity central to Rothko’s conception. Considered too altered to be exhibited, the delicate paintings were removed from their intended architectural setting and placed in storage.
+</h2>
+</div>
+<div id="text_3_left" style="position:absolute;z-index:20;width:133px;top:360px;left:0px;margin:117px 0 0 33px;padding:0;">
+<h2>
+The exhibition Mark Rothko’s Harvard Murals (on display at the Harvard Art Museums throughJuly 26, 2015) proposes an innovative restoration method: the digital projection of precisely calibrated colored light as a tool to restore the appearance of the murals’ original colors. A team from the Harvard Art Museums’ Straus Center for Conservation and Technical Studies, led by conservation scientist Jens Stenger and in collaboration with scientists from the Massachusetts Institute of Technology and the University of Basel, Switzerland, devised this noninvasive approach that restores the color to Rothko’s murals, pixel by pixel, through a sophisticated scientific system of projected color compensation. This treatment returns an important Rothko mural series—and one of Harvard’s most important commissions of contemporary art—to public view and scholarship, allowing it to be experienced as a whole for the first time in decades.
+</h2>
+</div>
+<div id="text_4_left" style="position:absolute;z-index:20;width:107px;top:360px;left:0px;margin:117px 0 0 33px;padding:0;">
+<h2>
+Rothko blended his own paints to achieve the exact color and effect he desired. To create the Harvard Murals, he exploited both traditional pigments, such as Ultramarine Blue, and newer, synthetic pigments like Lithol Red, developed at the turn of the 20th century and used predominantly in the printing industry from the 1950s onward. The plum-colored paint he used for the background was a mixture of Ultramarine and Lithol Red in an animal-glue binding medium. In the dark motifs, Rothko used other pigments such as carbon-based black, Phthalocyanine blue (PB 15), and alizarin (PR83).
+</h2>
+</div>
+<div id="text_5_left" style="position:absolute;z-index:20;width:133px;top:360px;left:0px;margin:117px 0 0 33px;padding:0;">
+<h2>
+Rothko made revisions to his paintings, and several works bear visible traces of such rethinking. In Panel Five, for instance, he reduced the size of the nodules and top corners of the lighter shape by painting over the white with a mixture of Lithol Red and Ultramarine Blue. Early photos of the painting show that Rothko did not go to great pains to conceal these corrections. The changes are even more noticeable in the panel’s faded state: the Ultramarine Blue stands out visibly against the white, where the Lithol Red has faded completely from the purple mixture.
+</h2>
+</div>
+
+
+<div id="text_1_right" style="position:absolute;z-index:20;width:133px;top:360px;right:0px;margin:117px 33px 0 0;padding:0;">
+<h2>
+Object Number: 2011.638.1 <br>
+People: Mark Rothko, American (Dvinsk, Russia 1903 - 1970 New York, NY) <br>
+Title: Panel One (Harvard Mural Triptych) <br>
+Classification: Paintings <br>
+Date: 1962 <br>
+Culture: American <br>
+Medium: Egg tempera and distemper on canvas <br>
+Dimensions: 267.3 x 297.8 cm (105 1/4 x 117 1/4 in.) <br>
+Provenance: Gift of the artist 1962-1965 (Commissioned by Harvard University Society of Fellows, 1961-1962); to Harvard University, transfer; to Harvard Art Museums, 2011. <br>
+Accession Year: 2011
+</h2>
+</div>
+<div id="text_2_right" style="position:absolute;z-index:20;width:107px;top:360px;right:0px;margin:117px 33px 0 0;padding:0;">
+<h2>
+Object Number: 2011.638.1 <br>
+People: Mark Rothko, American (Dvinsk, Russia 1903 - 1970 New York, NY) <br>
+Title: Panel Two (Harvard Mural Triptych) <br>
+Classification: Paintings <br>
+Date: 1962 <br>
+Culture: American <br>
+Medium: Egg tempera and distemper on canvas <br>
+Dimensions: 267.3 x 458.8 cm (105 1/4 x 180 5/8 in.) <br>
+Provenance: Gift of the artist 1962-1965 (Commissioned by Harvard University Society of Fellows, 1961-1962); to Harvard University, transfer; to Harvard Art Museums, 2011. <br>
+Accession Year: 2011
+</h2>
+</div>
+<div id="text_3_right" style="position:absolute;z-index:20;width:133px;top:360px;right:0px;margin:117px 33px 0 0;padding:0;">
+<h2>
+Object Number: 2011.638.1 <br>
+People: Mark Rothko, American (Dvinsk, Russia 1903 - 1970 New York, NY) <br>
+Title: Panel Three (Harvard Mural Triptych) <br>
+Classification: Paintings <br>
+Date: 1962 <br>
+Culture: American <br>
+Medium: Egg tempera and distemper on canvas <br>
+Dimensions: 267 x 243.8 cm (105 1/8 x 96 in.) <br>
+Provenance: Gift of the artist 1962-1965 (Commissioned by Harvard University Society of Fellows, 1961-1962); to Harvard University, transfer; to Harvard Art Museums, 2011. <br>
+Accession Year: 2011
+</h2>
+</div>
+<div id="text_4_right" style="position:absolute;z-index:20;width:107px;top:360px;right:0px;margin:117px 33px 0 0;padding:0;">
+<h2>
+Object Number: 2011.638.1 <br>
+People: Mark Rothko, American (Dvinsk, Russia 1903 - 1970 New York, NY) <br>
+Title: Panel Four (Harvard Mural Triptych) <br>
+Classification: Paintings <br>
+Date: 1962 <br>
+Culture: American <br>
+Medium: Egg tempera and distemper on canvas <br>
+Dimensions: 266.7 x 457.2 cm (105 x 180 in.) <br>
+Provenance: Gift of the artist 1962-1965 (Commissioned by Harvard University Society of Fellows, 1961-1962); to Harvard University, transfer; to Harvard Art Museums, 2011. <br>
+Accession Year: 2011
+</h2>
+</div>
+<div id="text_5_right" style="position:absolute;z-index:20;width:133px;top:360px;right:0px;margin:117px 33px 0 0;padding:0;">
+<h2>
+Object Number: 2011.638.1 <br>
+People: Mark Rothko, American (Dvinsk, Russia 1903 - 1970 New York, NY) <br>
+Title: Panel Five (Harvard Mural Triptych) <br>
+Classification: Paintings <br>
+Date: 1962 <br>
+Culture: American <br>
+Medium: Egg tempera and distemper on canvas <br>
+Dimensions:266.7 x 297.2 cm (105 x 117 in.) <br>
+Provenance: Gift of the artist 1962-1965 (Commissioned by Harvard University Society of Fellows, 1961-1962); to Harvard University, transfer; to Harvard Art Museums, 2011. <br>
+Accession Year: 2011
+</h2>
+</div>
+
+
+
+    </div>
+
+
+    <div id="menu">
+        <ul>
+            <li id="panel_1" class="selected">> 
+                    <img src="img/img_rothko/1_1.jpg" title="" />
+                    <h1> 
+                        Panel One
+                        <!-- 267.3 x 297.8 cm (105 1/4 x 117 1/4 in.) -->
+                    </h1>
+            </li>
+            <li id="panel_2">
+                    <img src="img/img_rothko/2_1.jpg" title="" />
+                    <h1> 
+                        Panel Two
+                        <!-- 267.3 x 458.8 cm (105 1/4 x 180 5/8 in.) -->
+                    </h1>
+            </li>
+            <li id="panel_3">
+                    <img src="img/img_rothko/3_1.jpg" title="" />
+                    <h1> 
+                        Panel Three
+                        <!-- 267 x 243.8 cm (105 1/8 x 96 in.) -->
+                    </h1>
+            </li>
+            <li id="panel_4">
+                    <img src="img/img_rothko/4_1.jpg" title="" />
+                    <h1> 
+                        Panel Four
+                        <!-- 266.7 x 457.2 cm (105 x 180 in.) -->
+                    </h1>
+            </li>
+            <li id="panel_5">
+                    <img src="img/img_rothko/5_1.jpg" title="" />
+                    <h1> 
+                        Panel Five
+                        <!-- 266.7 x 297.2 cm (105 x 117 in.) -->
+                    </h1>
+            </li>
+        </ul>
+    </div>
+
+
+
+
+    <script type="text/javascript">
+        var img_1_1 = $("#img_1_1");
+        var img_1_2 = $("#img_1_2");
+        var img_2_1 = $("#img_2_1");
+        var img_2_2 = $("#img_2_2");
+        var img_3_1 = $("#img_3_1");
+        var img_3_2 = $("#img_3_2");
+        var img_4_1 = $("#img_4_1");
+        var img_4_2 = $("#img_4_2");
+        var img_5_1 = $("#img_5_1");
+        var img_5_2 = $("#img_5_2");
+
+        var dark_bg = $("#dark_bg");
+        dark_bg.hide();
+
+        var text_1_left = $("#text_1_left");
+        var text_2_left = $("#text_2_left");
+        var text_3_left = $("#text_3_left");
+        var text_4_left = $("#text_4_left");
+        var text_5_left = $("#text_5_left");
+        text_1_left.hide();
+        text_2_left.hide();
+        text_3_left.hide();
+        text_4_left.hide();
+        text_5_left.hide();
+
+        var text_1_right = $("#text_1_right");
+        var text_2_right = $("#text_2_right");
+        var text_3_right = $("#text_3_right");
+        var text_4_right = $("#text_4_right");
+        var text_5_right = $("#text_5_right");
+        text_1_right.hide();
+        text_2_right.hide();
+        text_3_right.hide();
+        text_4_right.hide();
+        text_5_right.hide();
+
+
+        /*---------MENU-----------------------------*/
+        var li = $("li");
+        var liSelected;
+
+        var show_menu = true;
+
+        // $("#modal_cleve").hide();
+        // $("#modal_bazille").hide();
+        // $("#modal_botticelli").hide();
+        /*---------MODEL:CHANGE TRANSPARENCY--------*/
+        // var op = 1;
+        // var step = 0.1; 
+        // var min = 0.2, max = 1; 
+        // var img_1961_26_v = document.getElementById("img_1961_26_v");
+        // var img_1937_78_v = document.getElementById("img_1937_78_v");
+        // var img_1943_105_v = document.getElementById("img_1943_105_v"); 
+        // img_1961_26_v.style.opacity = op;
+        // img_1937_78_v.style.opacity = op;
+        // img_1943_105_v.style.opacity = op;
+
+
+$(document).ready(function(e) {
+    
+    document.body.style.transform = "scale(0.53)";
+    document.body.style.margin = "2px 0 0 -310px";
+
+    hideAllMainImg();
+    img_1_1.fadeIn("fast");
+});
+
+
+
+        $(document).on("keydown", function(e) {
+            if(show_menu) {
+                if(e.which === 39) {
+                    if(liSelected) {
+                        liSelected.removeClass("selected");
+                        next = liSelected.next();
+                        if(next.length > 0) {
+                            liSelected = next.addClass("selected");
+                        } else {
+                            liSelected = li.eq(0).addClass("selected");
+                        }
+                    } else {
+                        liSelected = li.eq(0).addClass("selected");
+                    }
+
+
+
+if($("#panel_1").hasClass("selected")) {
+    $("#panel_2").removeClass("selected");
+    $("#panel_3").removeClass("selected");
+    $("#panel_4").removeClass("selected");
+    $("#panel_5").removeClass("selected");
+    hideAllMainImg();
+    dark_bg.fadeOut("fast");
+    img_1_1.fadeIn("fast");
+    img_1_2.fadeIn("fast");
+    text_1_left.fadeIn("fast");
+    text_1_right.fadeIn("fast");
+} else if ($("#panel_2").hasClass("selected")) {
+    $("#panel_1").removeClass("selected");
+    $("#panel_3").removeClass("selected");
+    $("#panel_4").removeClass("selected");
+    $("#panel_5").removeClass("selected");
+    hideAllMainImg();
+    dark_bg.fadeOut("fast");
+    img_2_1.fadeIn("fast");
+    img_2_2.fadeIn("fast");
+    text_2_left.fadeIn("fast");
+    text_2_right.fadeIn("fast");
+} else if ($("#panel_3").hasClass("selected")) {
+    $("#panel_1").removeClass("selected");
+    $("#panel_2").removeClass("selected");
+    $("#panel_4").removeClass("selected");
+    $("#panel_5").removeClass("selected");
+    hideAllMainImg();
+    dark_bg.fadeOut("fast");
+    img_3_1.fadeIn("fast");
+    img_3_2.fadeIn("fast");
+    text_3_left.fadeIn("fast");
+    text_3_right.fadeIn("fast");
+} else if ($("#panel_4").hasClass("selected")) {
+    $("#panel_1").removeClass("selected");
+    $("#panel_2").removeClass("selected");
+    $("#panel_3").removeClass("selected");
+    $("#panel_5").removeClass("selected");
+    hideAllMainImg();
+    dark_bg.fadeOut("fast");
+    img_4_1.fadeIn("fast");
+    img_4_2.fadeIn("fast");
+    text_4_left.fadeIn("fast");
+    text_4_right.fadeIn("fast");
+} else if ($("#panel_5").hasClass("selected")) {
+    $("#panel_1").removeClass("selected");
+    $("#panel_2").removeClass("selected");
+    $("#panel_3").removeClass("selected");
+    $("#panel_4").removeClass("selected"); 
+    hideAllMainImg();
+    dark_bg.fadeOut("fast");
+    img_5_1.fadeIn("fast");
+    img_5_2.fadeIn("fast");
+    text_5_left.fadeIn("fast");
+    text_5_right.fadeIn("fast");
+} else {
+    hideAllMainImg();
+    dark_bg.fadeOut("fast");
+}
+
+
+                    console.log("menu_select_R");
+                } else if(e.which === 37) {
+                    if(liSelected) {
+                        liSelected.removeClass("selected");
+                        next = liSelected.prev();
+                        if(next.length > 0) {
+                            liSelected = next.addClass("selected");
+                        } else {
+                            liSelected = li.last().addClass("selected");
+                        }
+                    } else {
+                        liSelected = li.last().addClass("selected");
+                    }
+                    console.log("menu_select_L");
+
+
+if($("#panel_1").hasClass("selected")) {
+    $("#panel_2").removeClass("selected");
+    $("#panel_3").removeClass("selected");
+    $("#panel_4").removeClass("selected");
+    $("#panel_5").removeClass("selected");
+    hideAllMainImg();
+    dark_bg.fadeOut("fast");
+    img_1_1.fadeIn("fast");
+    img_1_2.fadeIn("fast");
+    text_1_left.fadeIn("fast");
+    text_1_right.fadeIn("fast");
+} else if ($("#panel_2").hasClass("selected")) {
+    $("#panel_1").removeClass("selected");
+    $("#panel_3").removeClass("selected");
+    $("#panel_4").removeClass("selected");
+    $("#panel_5").removeClass("selected");
+    hideAllMainImg();
+    dark_bg.fadeOut("fast");
+    img_2_1.fadeIn("fast");
+    img_2_2.fadeIn("fast");
+    text_2_left.fadeIn("fast");
+    text_2_right.fadeIn("fast");
+} else if ($("#panel_3").hasClass("selected")) {
+    $("#panel_1").removeClass("selected");
+    $("#panel_2").removeClass("selected");
+    $("#panel_4").removeClass("selected");
+    $("#panel_5").removeClass("selected");
+    hideAllMainImg();
+    dark_bg.fadeOut("fast");
+    img_3_1.fadeIn("fast");
+    img_3_2.fadeIn("fast");
+    text_3_left.fadeIn("fast");
+    text_3_right.fadeIn("fast");
+} else if ($("#panel_4").hasClass("selected")) {
+    $("#panel_1").removeClass("selected");
+    $("#panel_2").removeClass("selected");
+    $("#panel_3").removeClass("selected");
+    $("#panel_5").removeClass("selected");
+    hideAllMainImg();
+    dark_bg.fadeOut("fast");
+    img_4_1.fadeIn("fast");
+    img_4_2.fadeIn("fast");
+    text_4_left.fadeIn("fast");
+    text_4_right.fadeIn("fast");
+} else if ($("#panel_5").hasClass("selected")) {
+    $("#panel_1").removeClass("selected");
+    $("#panel_2").removeClass("selected");
+    $("#panel_3").removeClass("selected");
+    $("#panel_4").removeClass("selected"); 
+    hideAllMainImg();
+    dark_bg.fadeOut("fast");
+    img_5_1.fadeIn("fast");
+    img_5_2.fadeIn("fast");
+    text_5_left.fadeIn("fast");
+    text_5_right.fadeIn("fast");
+} else {
+    hideAllMainImg();
+    dark_bg.fadeOut("fast");
+}
+
+
+                }
+            } else if (!show_menu) {
+                if(e.which === 37 || e.which === 39) {
+                    // $("#img_1961_26_v").toggle(); 
+                    // $("#img_1937_78_v").toggle(); 
+                    // $("#img_1943_105_v").toggle();
+                    // console.log("modal_img_flip");   
+                }         
+            }
+
+
+            if (e.which === 38) { 
+                // op += step;
+                // op = Math.min(max, op); 
+                // img_1961_26_v.style.opacity = Math.min(max, op);
+                // img_1937_78_v.style.opacity = Math.min(max, op);
+                // img_1943_105_v.style.opacity = Math.min(max, op);
+                // console.log("modal_img_transparency +");
+            } else if (e.which === 40) {
+                // op -= step;
+                // op = Math.max(min, op);
+                // img_1961_26_v.style.opacity = Math.min(max, op);
+                // img_1937_78_v.style.opacity = Math.min(max, op);
+                // img_1943_105_v.style.opacity = Math.min(max, op);
+                // console.log("modal_img_transparency -");
+            }
+        });
+        
+
+
+
+        $(document).keypress(function(e){
+            if (e.which === 13) { 
+
+                e.preventDefault();
+
+                if(show_menu) {
+                    if($("#panel_1").hasClass("selected")) {
+                    // if($("#btn_cleve").is(":hover")) {
+                        // $("#btn_cleve").click();
+                        // $("#modal_cleve").fadeToggle("fast");
+                        // $("#modal_cleve").show();
+                        img_1_1.fadeToggle("slow");
+                        dark_bg.fadeToggle("slow");
+
+                        // $("#modal_cleve").fadeTo("fast", 1.0);
+                        // $("#img_1961_26_v").show();
+                        // show_menu = false;
+                        console.log("show_panel_1");
+                    }
+                    if($("#panel_2").hasClass("selected")) {
+                        // $("#modal_bazille").fadeTo("fast", 1.0);
+                        // $("#img_1937_78_v").show(); 
+                        // show_menu = false;
+                        img_2_1.fadeToggle("slow");
+                        dark_bg.fadeToggle("slow");
+                        console.log("show_panel_2");
+                    }
+                    if($("#panel_3").hasClass("selected")) {
+                        // $("#modal_botticelli").fadeTo("fast", 1.0);
+                        // $("#img_1943_105_v").show();
+                        // show_menu = false;
+                        img_3_1.fadeToggle("slow");
+                        dark_bg.fadeToggle("slow");
+                        console.log("show_panel_3");
+                    }
+                    if($("#panel_4").hasClass("selected")) {
+                        img_4_1.fadeToggle("slow");
+                        dark_bg.fadeToggle("slow");
+                        console.log("show_panel_4");
+                    }
+                    if($("#panel_5").hasClass("selected")) {
+                        img_5_1.fadeToggle("slow");
+                        dark_bg.fadeToggle("slow");
+                        console.log("show_panel_5");
+                    }
+                } else {
+                    // $("#modal_cleve").fadeOut("fast");
+                    // $("#modal_bazille").fadeOut("fast");
+                    // $("#modal_botticelli").fadeOut("fast");
+                    // $("#modal_cleve").fadeTo("fast", 0.0);
+                    // $("#modal_bazille").fadeTo("fast", 0.0);
+                    // $("#modal_botticelli").fadeTo("fast", 0.0);
+                    // $("#modal_cleve").hide();
+                    // $("#modal_bazille").hide();
+                    // $("#modal_botticelli").hide();
+                    // $("#img_1961_26_v").show(); 
+                    // $("#img_1937_78_v").show();
+                    // $("#img_1943_105_v").show();
+                    // img_1961_26_v.style.opacity = 1;
+                    // img_1937_78_v.style.opacity = 1;
+                    // img_1943_105_v.style.opacity = 1;
+                    
+                    show_menu = true;
+                    console.log("back_to_menu");
+                }
+            }
+        });
+
+
+
+        
+        $(document).on("click", function(e){
+            // $("#img_1961_26_v").show(); 
+            // $("#img_1937_78_v").show(); 
+            // $("#img_1943_105_v").show();
+            // img_1961_26_v.style.opacity = 1;
+            // img_1937_78_v.style.opacity = 1;
+            // img_1943_105_v.style.opacity = 1;
+        });
+        $("#panel_1").on("click", function(e){
+            hideAllMainImg();
+            dark_bg.fadeOut("fast");
+            img_1_1.fadeIn("fast");
+            img_1_2.fadeIn("fast");
+            text_1_left.fadeIn("fast");
+            text_1_right.fadeIn("fast");
+            show_menu = true;
+            $("#panel_1").addClass("selected");
+            $("#panel_2").removeClass("selected");
+            $("#panel_3").removeClass("selected");
+            $("#panel_4").removeClass("selected");
+            $("#panel_5").removeClass("selected");
+        });
+        $("#panel_2").on("click", function(e){
+            hideAllMainImg();
+            dark_bg.fadeOut("fast");
+            img_2_1.fadeIn("fast");
+            img_2_2.fadeIn("fast");
+            text_2_left.fadeIn("fast");
+            text_2_right.fadeIn("fast");
+            show_menu = true;
+            $("#panel_2").addClass("selected");
+            $("#panel_1").removeClass("selected");
+            $("#panel_3").removeClass("selected");
+            $("#panel_4").removeClass("selected");
+            $("#panel_5").removeClass("selected");
+        });
+        $("#panel_3").on("click", function(e){
+            hideAllMainImg();
+            dark_bg.fadeOut("fast");
+            img_3_1.fadeIn("fast");
+            img_3_2.fadeIn("fast");
+            text_3_left.fadeIn("fast");
+            text_3_right.fadeIn("fast");
+            show_menu = true;
+            $("#panel_3").addClass("selected");
+            $("#panel_1").removeClass("selected");
+            $("#panel_2").removeClass("selected");
+            $("#panel_4").removeClass("selected");
+            $("#panel_5").removeClass("selected");
+        });
+        $("#panel_4").on("click", function(e){
+            hideAllMainImg();
+            dark_bg.fadeOut("fast");
+            img_4_1.fadeIn("fast");
+            img_4_2.fadeIn("fast");
+            text_4_left.fadeIn("fast");
+            text_4_right.fadeIn("fast");
+            show_menu = true;
+            $("#panel_4").addClass("selected");
+            $("#panel_1").removeClass("selected");
+            $("#panel_2").removeClass("selected");
+            $("#panel_3").removeClass("selected");
+            $("#panel_5").removeClass("selected");
+        });
+        $("#panel_5").on("click", function(e){
+            hideAllMainImg();
+            dark_bg.fadeOut("fast");
+            img_5_1.fadeIn("fast");
+            img_5_2.fadeIn("fast");
+            text_5_left.fadeIn("fast");
+            text_5_right.fadeIn("fast");
+            show_menu = true;
+            $("#panel_5").addClass("selected");
+            $("#panel_1").removeClass("selected");
+            $("#panel_2").removeClass("selected");
+            $("#panel_3").removeClass("selected");
+            $("#panel_4").removeClass("selected");
+        });
+        // $("#btn_cleve").on("click", function(e){
+        //     $("#modal_cleve").fadeTo("fast", 1.0);
+        //     $("#img_1961_26_v").show();
+        //     show_menu = false;
+        //     console.log("show_cleve");
+        // });
+        // $("#btn_bazille").on("click", function(e){
+        //     $("#modal_bazille").fadeTo("fast", 1.0);
+        //     $("#img_1937_78_v").show(); 
+        //     show_menu = false;
+        //     console.log("show_bazille");
+        // });
+        // $("#btn_botticelli").on("click", function(e){
+        //     $("#modal_botticelli").fadeTo("fast", 1.0);
+        //     $("#img_1943_105_v").show();
+        //     show_menu = false;
+        //     console.log("show_botticelli");
+        // });
+        
+var hideAllMainImg = function(){
+    img_1_1.fadeOut("fast");
+    img_1_2.fadeOut("fast");
+    img_2_1.fadeOut("fast");
+    img_2_2.fadeOut("fast");
+    img_3_1.fadeOut("fast");
+    img_3_2.fadeOut("fast");
+    img_4_1.fadeOut("fast");
+    img_4_2.fadeOut("fast");
+    img_5_1.fadeOut("fast");
+    img_5_2.fadeOut("fast");
+
+    text_1_left.fadeOut("fast");
+    text_2_left.fadeOut("fast");
+    text_3_left.fadeOut("fast");
+    text_4_left.fadeOut("fast");
+    text_5_left.fadeOut("fast");
+
+    text_1_right.fadeOut("fast");
+    text_2_right.fadeOut("fast");
+    text_3_right.fadeOut("fast");
+    text_4_right.fadeOut("fast");
+    text_5_right.fadeOut("fast");  
+}
+
+
+    </script>
+
+
+
+    <!--
+    [LeftArrow]   37     
+    [UpArrow]     38     
+    [RightArrow]  39     
+    [DownArrow]   40
+    [Space]       32
+    [Enter]       13
+    http://www.k68.org/wp-content/uploads/2010/11/Key_Codes.htm
+    -->
+
+    </body>
+</html>

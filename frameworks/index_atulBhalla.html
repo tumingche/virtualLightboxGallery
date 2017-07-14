@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+	<meta charset="utf-8"/>
+	<title> 3D Lightbox: On Dvaipayana by Atul Bhalla </title>
+	<link type="text/css" rel="stylesheet" href="http://fonts.typotheque.com/WF-023797-007265.css" />
+	<style type="text/css">
+	  	body {
+	  		background: #000000;
+	  		margin: 0;
+	  		padding: 0;
+	  		overflow: hidden;
+            /*cursor: none;*/
+	  	}
+	  	#myVideo {
+	  		position: absolute;
+	  		width: 1920px;
+	  		height: 1080px;
+	  		top: 0;
+	  		left: 0;
+	  		margin: 0;
+	  		padding: 0;
+	  	}
+		/*
+		video { 
+		  background: url("//demosthenes.info/assets/img/test.jpg") no-repeat;
+		  background-size: cover;
+		  position: fixed;
+		  z-index: -100;
+		  left: 0;
+		  top: 0;
+		  min-width: 100%;
+		  min-height: 100%;
+		  width: auto;
+		  height: auto;
+		  transition: 1s opacity;
+		}
+		*/
+	</style>
+	<!-- <link rel="stylesheet" href="css/style.css" /> -->
+    <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript"></script>   
+</head>
+
+
+<body>
+  	<!-- <video id="myVideo" width="1920" height="1080" autoplay loop> -->
+  	<video id="myVideo" autoplay loop>
+        <source src="img/img_atulBhalla/onDvaipayana_360.mp4" type="video/mp4" />
+		<!-- <source src="media/latest_sci_display.mp4" type="video/mp4; codecs='avc1.420E01E, mp4a.40.2'"/>-->
+ 	</video>
+
+
+ 	<script type="text/javascript">
+        $(document).ready(function(){
+            document.body.style.transform = "scale(0.53)";
+            document.body.style.margin = "2px 0 0 -310px";
+        });
+    </script>
+</body>
+</html>
